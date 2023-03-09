@@ -7,6 +7,10 @@ if obj.status ~= nil then
         health_status.status = "Healthy"
         return health_status
       end
+      if condition.type == "Running" and condition.reason == "Successful" then
+        health_status.status = "Healthy"
+        return health_status
+      end
       if condition.type == "Failure" and condition.status == "True" then
         health_status.status = "Degraded"
         return health_status
